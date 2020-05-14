@@ -5,6 +5,7 @@ import Base from "./Base.js";
 import Card from "./Card"
 import { getProducts } from "./helper/coreapicalls.js"
 import { loadCart } from './helper/cartHelper';
+import Paymentb from './Paymentb'
 
 const Cart = () => {
 
@@ -43,8 +44,10 @@ const Cart = () => {
     return (
         <Base title="Cart Page" description="Ready to checkout">
             <div className="row text-center">
-                <div className="col-6">{products.length > 0 ? loadAllProducts() : (<h3>No products in cart</h3>)}</div>
-                <div className="col-6">{loadCheckOut()}</div>
+                <div className="col-6">{products.length > 0 ? loadAllProducts(products) : (<h3>No products in cart</h3>)}</div>
+                <div className="col-6">
+                    <Paymentb products={products} setReload={setReload} />
+                </div>
                     
             </div>
         </Base>
